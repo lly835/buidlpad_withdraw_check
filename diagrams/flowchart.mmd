@@ -1,0 +1,13 @@
+flowchart TD
+    A[页面加载完成] --> B{找到 span/input 中的地址?}
+    B -- 否 --> C[等待 DOM 变更]
+    B -- 是 --> D[提取地址内容]
+    D --> E{地址为空?}
+    E -- 是 --> F[提示：请输入地址]
+    E -- 否 --> G[发送 CHECK_ADDRESS 消息给后台]
+    G --> H[后台调用后端 API]
+    H --> I{后端响应}
+    I -- status=found --> J[显示：地址在名单里]
+    I -- status=not_found --> K[显示：地址不在名单里]
+    I -- 其它/错误 --> L[显示：错误提示]
+    C --> B

@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Buidlpad Withdraw Address Checker",
+  "description": "Validates withdrawal addresses on buidlpad.com against an approved list.",
+  "version": "1.0.0",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://buidlpad.com/*",
+    "http://*/api/*",
+    "https://*/api/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://buidlpad.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

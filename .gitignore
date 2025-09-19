@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.DS_Store
+.idea
+.env
+*.log
+backend.tar.gz
+extension/dist
+extension/buidlpad_withdraw_checker.zip
+dist
+.idea

@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant Page as buidlpad.com 页面
+    participant Content as Chrome 内容脚本
+    participant Background as 后台 Service Worker
+    participant API as 校验后端 (3001)
+    participant User as 使用者
+    User->>Page: 打开页面 / 输入地址
+    Content->>Page: 监听地址元素/输入框
+    Page-->>Content: 提供地址文本
+    Content->>Background: CHECK_ADDRESS(address)
+    Background->>API: GET /api/check-address?address=...
+    API-->>Background: { status }
+    Background-->>Content: { ok, status }
+    Content->>Page: 更新状态徽标
+    Page-->>User: 显示校验结果
